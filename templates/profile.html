@@ -17,7 +17,7 @@
     <header class="head">
         <div class="head_div">
             <nav class="head_nav">
-                <a href="index.html"><img src="/static/images/logo.svg" alt=""></a>
+                <a href="/"><img src="/static/images/logo.svg" alt=""></a>
 
                 <ul class="head_list">
                     <li>
@@ -36,18 +36,19 @@
 
     
     <main>
-         <div class="profile-card">
         
-        <div class="profile-card-info">
-            <h1>Иван Иванов</h1>
-            <span class="balance">Баланс: 100₽</span>
-       
-            <p>Email: <a href="mailto:examle@mail.com" class="profile-email">examle@mail.com</a></p>
-            <button type="" class="reg-btn"><a href="./exchenge.html" class="k-obmenu">К обмену</a></button>
+        <div class="profile-card">
+        
+            <div class="profile-card-info">
+                <h1>{{user.first_name}} {{user.last_name}}</h1>
+                <span class="balance">Баланс: 0</span>
+        
+                <p>Email: <a href="mailto:examle@mail.com" class="profile-email">{{user.email}}</a></p>
+                <button type="" class="reg-btn"><a href="./exchenge.html" class="k-obmenu">К обмену</a></button>
 
-        </div>
+            </div>
         
-    </div>
+         </div>
         
     </main>
 
