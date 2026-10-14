@@ -38,6 +38,16 @@
             <div class="reg-card">
                 <h2>Вход</h2>
 
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="error-box">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                     </div>
+                    {% endif %}
+                {% endwith %}
+
 
                 <form id="loin-form" method="POST">
 

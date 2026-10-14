@@ -466,6 +466,19 @@ a {
 
 }
 
+.error-box {
+    background-color: #fce4e4; 
+    border: 1px solid #fcc2c2;   
+    color: #cc0000;           
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.error-box p {
+    margin: 0;
+    font-size: 14px;
+}
 
 
 

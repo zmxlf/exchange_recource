@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request,redirect,url_for,session
+from flask import Flask, render_template, request,redirect,url_for,session,flash
 import os
 from db import db, connect_db
 import models
@@ -41,11 +41,14 @@ def register():
         confirm_password=request.form.get("confirm-password")
         
         if password!=confirm_password:
-            return "Пароли не совпадают",400
+            flash("Пароли не совпадают")
+            return render_template("sgin.html")
         if len(password)<6:
-            return "Пароль должен содержать не мнее 6 символов", 400
+            flash("Пароль должен иметь не менее 6 символов")
+            return render_template("sgin.html")
         if models.User.query.filter_by(email=email).first():
-            return "Пользователь уже существует",400
+            flash("Пользователь уже существует")
+            return render_template("sgin.html")
         hashed_password = generate_password_hash(password)
 
         user=models.User(
@@ -92,7 +95,8 @@ def login():
             return redirect(url_for("profile"))
         
         else:
-            return "неверный email или пароль", 401
+            flash("Неверный пароль или логин")
+            return render_template("login.html")
     return render_template("login.html")
 
 # @app.route("/<page>.html")
