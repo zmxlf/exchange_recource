@@ -53,7 +53,6 @@ def register():
 
         user=models.User(
             email = email,
-            bank_requisites = "None",
             password_hash = hashed_password,
             first_name = first_name,
             last_name = last_name,
