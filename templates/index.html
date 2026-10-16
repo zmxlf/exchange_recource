@@ -1,165 +1,113 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zalupoker</title>
-    <link rel="stylesheet" href="/static/css/main.css">
-    <link rel="shortcut icon" href="/static/images/favicon.svg" type="image/x-icon">
+{% extends "base.html" %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+{% block header %}
+<header class="head">
+    <div class="head_div">
+        <nav class="head_nav">
+            <a href="/"><img src="/static/images/logo.svg" alt=""></a>
+            <ul class="head_list">
+                <li class="head_list-item">
+                    <a class="head_list-link" href="">Как это работает</a>
+                </li>
+                <li class="head_list-item">
+                    <a class="head_list-link" href="">Безопасность</a>
+                </li>
+                <li class="head_list-item">
+                    <a class="head_list-button" href="/register">Войти</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
-      
-</head>
-<body>
-    <header class="head">
-        <div class="head_div">
-            <nav class="head_nav">
-                <a href="/"><img src="/static/images/logo.svg" alt=""></a>
-                <ul class="head_list">
-                    <li class="head_list-item">
-                        <a class="head_list-link" href="">Как это работает</a>
-                    </li>
-                    
-                    <li class="head_list-item">
-                        <a class="head_list-link" href="">Безопасность</a>
-                    </li>
-
-                    <li class="head_list-item">
-                        <a class="head_list-button" href="/register">Войти</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-        <div class="head-top">
-             <div class="head_div2">
+    <div class="head-top">
+        <div class="head_div2">
             <nav class="head_nav2">
                 <img src="/static/images/status.svg" alt="">
                 <ul class="head_list2">
                     <li class="head_list2-link1">
                         Обмен валюты. <br>Спокойно и точно.
                     </li>
-
                     <li class="head_list2-link">
                         Фиксируем курс, защищаем каждую операцию и <br>переводим средства без лишних шагов.
                     </li>
-
                 </ul>
                 <img src="/static/images/preimush.svg" alt="">
             </nav>
         </div>
 
         <div class="head_obmen">
-
             <h2>Быстрый обмен</h2>
             <div class="input_block">
                 <span class="input_lable">Отдаете</span>
                 <div class="input_mini">
                     <input type="number" id="input_send" value="1000" class="kurs_input" step="0.01">
-
-                  <div class="current_select_valute">
-                    <select class="current_select_valute1" id="select_valute0">
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                        <option value="RUB">RUB</option>
-                        <option value="CNY">CNY</option>
-                    </select>
-                  </div>
+                    <div class="current_select_valute">
+                        <select class="current_select_valute1" id="select_valute_from">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="RUB">RUB</option>
+                            <option value="CNY">CNY</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-
 
             <div class="input_block">
                 <span class="input_lable">Получаете</span>
                 <div class="input_mini">
                     <input type="number" id="input_get" value="1000" class="kurs_input" step="0.01">
-
-                  <div class="current_select_valute">
-                    <select class="current_select_valute1"  id="select_valute1">
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                        <option value="RUB">RUB</option>
-                        <option value="CNY">CNY</option>
-                    </select>
-                  </div>
+                    <div class="current_select_valute">
+                        <select class="current_select_valute1" id="select_valute_to">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="RUB">RUB</option>
+                            <option value="CNY">CNY</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <a class="button_login" href="/register">Обменять сейчас</a>
             <p class="timer_info">Курс зафиксируется на 15 минут</p>
-
-
         </div>
-    </header>
-
-    <main>
-        <div class = "top">
-        <div class="features">
-            <div class="features-top">
-                <div class="features-title">
-                    <span>НАДЁЖНОСТЬ В ДЕТАЛЯХ</span>
-                    <h2>Финансовый сервис, которому доверяют</h2>
-                </div>
-                <p class="features-desc">Прозрачные условия, фиксированный курс и контроль на каждом этапе обмена.</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="card">
-                    <div class="card-icon icon-green">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#103D36" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <h3>Защита средств</h3>
-                    <p>Многоуровневая проверка операций и резервирование каждой заявки.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon icon-green">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#103D36" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                    </div>
-                    <h3>Быстрый перевод</h3>
-                    <p>Автоматический мониторинг сети выбирает оптимальный маршрут.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon icon-green">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#103D36" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
-                    </div>
-                    <h3>Живая поддержка</h3>
-                    <p>Эксперты отвечают круглосуточно — без ботов и очередей.</p>
-                </div>
-            </div>
-        </div>
-
-            
-            
-
     </div>
-    </main>
-    
-    <footer class="footer">
-        <div class="footer-top">
-            <span>
-                Готовы к спокойному обмену?
-            </span>
-            <p>Создайте первую заявку по актуальному курсу.</p>
+</header>
+{% endblock %}
 
+{% block content %}
+<div class="top">
+    <div class="features">
+        <div class="features-top">
+            <div class="features-title">
+                <span>НАДЁЖНОСТЬ В ДЕТАЛЯХ</span>
+                <h2>Финансовый сервис, которому доверяют</h2>
+            </div>
+            <p class="features-desc">Прозрачные условия, фиксированный курс и контроль на каждом этапе обмена.</p>
         </div>
 
-        <div class="footer-down">
-            <span>
-                Zalupoker
-            </span>
-              
-            <h1>
-                © 2026 zalupoker Exchange
-            </h1>
+        <div class="features-grid">
+            <div class="card">
+                <div class="card-icon icon-green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#103D36" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Защита средств</h3>
+                <p>Многоуровневая проверка операций и резервирование каждой заявки.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon icon-green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#103D36" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <h3>Быстрый перевод</h3>
+                <p>Автоматический мониторинг сети выбирает оптимальный маршрут.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon icon-green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#103D36" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+                </div>
+                <h3>Живая поддержка</h3>
+                <p>Эксперты отвечают круглосуточно — без ботов и очередей.</p>
+            </div>
         </div>
-    </footer>
-
-
-</body>
-</html> 
-
+    </div>
+</div>
+{% endblock %}

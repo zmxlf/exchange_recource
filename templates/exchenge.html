@@ -1,105 +1,52 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zalupoker</title>
-    <link rel="stylesheet" href="/static/css/main.css">
-    <link rel="shortcut icon" href="/static/images/favicon.svg" type="image/x-icon">
+{% extends "base.html" %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+{% block header %}
+<header class="head">
+    <div class="head_div">
+        <nav class="head_nav">
+            <a href="/"><img src="/static/images/logo.svg" alt=""></a>
+        </nav>
+    </div>
+</header>
+{% endblock %}
 
-      
-</head>
-<body>
-    <header class="head">
-        <div class="head_div">
-            <nav class="head_nav">
-                <a href="index.html"><img src="/static/images/logo.svg" alt=""></a>
+{% block content %}
+<div class="obmen">
+    <div class="obmen-okno">
+        <h2>Обмен</h2>
 
-                <ul class="head_list">
-                    
-                </ul>
-
-            </nav>
-
-            
-        </div>
-        
-        
-    </header>
-        
-
-    
-    <main>
-        <div class="obmen">
-            <div class="obmen-okno">
-                 <h2>Обмен</h2>
-                <div class="input_block">
-                    <span class="input_lable">Отдаете</span>
-                    <div class="input_mini">
-                        <input type="number" id="input_send" value="1000" class="kurs_input" step="0.01">
-
-                    <div class="current_select_valute">
-                        <select class="current_select_valute1" id="select_valute0">
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="RUB">RUB</option>
-                            <option value="CNY">CNY</option>
-                        </select>
-                    </div>
-                    </div>
+        <div class="input_block">
+            <span class="input_lable">Отдаете</span>
+            <div class="input_mini">
+                <input type="number" id="input_send" value="1000" class="kurs_input" step="0.01">
+                <div class="current_select_valute">
+                    <select class="current_select_valute1" id="select_valute_from">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="RUB">RUB</option>
+                        <option value="CNY">CNY</option>
+                    </select>
                 </div>
-
-
-                <div class="input_block">
-                    <span class="input_lable">Получаете</span>
-                    <div class="input_mini">
-                        <input type="number" id="input_get" value="1000" class="kurs_input" step="0.01">
-
-                    <div class="current_select_valute">
-                        <select class="current_select_valute1"  id="select_valute0">
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="RUB">RUB</option>
-                            <option value="CNY">CNY</option>
-                        </select>
-                    </div>
-                    </div>
-                </div>
-
-                <a class="button_login" href="sgin.html">Обменять сейчас</a>
-                <p class="timer_info">Курс зафиксируется на 15 минут</p>
-
             </div>
-           
-
-        </div>
-        
-    </main>
-
-
-    <footer class="footer">
-        <div class="footer-top">
-            <span>
-                Никита СОСИ ХУЙ
-            </span>
-
         </div>
 
-        <div class="footer-down">
-            <span>
-                Zalupoker
-            </span>
-              
-            <h1>
-                © 2026 zalupoker Exchange
-            </h1>
+        <div class="input_block">
+            <span class="input_lable">Получаете</span>
+            <div class="input_mini">
+                <input type="number" id="input_get" value="1000" class="kurs_input" step="0.01">
+                <div class="current_select_valute">
+                    <select class="current_select_valute1" id="select_valute_to">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="RUB">RUB</option>
+                        <option value="CNY">CNY</option>
+                    </select>
+                </div>
+            </div>
         </div>
-    </footer>
 
-
-</body>
-</html> 
+        <a class="button_login" href="/register">Обменять сейчас</a>
+        <p class="timer_info">Курс зафиксируется на 15 минут</p>
+    </div>
+</div>
+{% endblock %}

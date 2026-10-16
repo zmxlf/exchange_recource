@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Zalupoker{% endblock %}</title>
+
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="shortcut icon" href="/static/images/favicon.svg" type="image/x-icon">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+        {% block extra_head %}{% endblock %}
+    </head>
+
+    <body>
+        <header>
+            {% block header %}
+            <header class="head">
+                <div class="head_div">
+                    <nav class="head_nav">
+                        <a href="index.html"><img src="/static/images/logo.svg" alt=""></a>
+
+                        <ul class="head_list">
+                            {% block nav %}
+                            <li class="head_list-item">
+                                <a class="head_list-button" href="/register">Войти</a>
+                            </li>
+                            {% endblock %}
+                        </ul>
+                    </nav>
+                </div>    
+        </header>
+        {% endblock %}
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="footer">
+            {% block footer_top %}
+            <div class="footer-top">
+                <span>Готовы к спокойному обмену?</span>
+                <p>Создайте первую заявку по актуальному курсу.</p>
+            </div>
+            {% endblock %}
+
+            <div class="footer-down">
+                <span>Zalupoker</span>
+                <h1>© 2026 zalupoker Exchange</h1>
+            </div>
+        </footer>
+
+        {% block scripts %}{% endblock %}
+
+
+
+    </body>
+</html>

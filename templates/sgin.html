@@ -1,109 +1,55 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zalupoker</title>
-    <link rel="stylesheet" href="/static/css/main.css">
-    <link rel="shortcut icon" href="/static/images/favicon.svg" type="image/x-icon">
+{% extends "base.html" %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+{% block header %}
+<header class="head">
+    <div class="head_div">
+        <nav class="head_nav">
+            <a href="/"><img src="/static/images/logo.svg" alt=""></a>
+        </nav>
+    </div>
+</header>
+{% endblock %}
 
-      
-</head>
-<body>
-    <header class="head">
-        <div class="head_div">
-            <nav class="head_nav">
-                <a href="/"><img src="/static/images/logo.svg" alt=""></a>
-            </nav>
-        </div>
+{% block content %}
+<div class="reg-container">
+    <div class="reg-card">
+        <h2>Регистрация</h2>
 
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="error-box">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
 
-        
-
-
-        </div>
-    </header>
-
-
-    
-    <main>
-        <div class="reg-container">
-
-
-            <div class="reg-card">
-                <h2>Регистрация</h2>
-
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        <div class="error-box">
-                        {% for message in messages %}
-                            <p>{{ message }}</p>
-                        {% endfor %}
-                     </div>
-                    {% endif %}
-                {% endwith %}
-                <form id="reg-form" method="POST" action="/register">
-
-                    <div class="reg-group">
-                        <label for="last-name">Фамилия</label>
-                        <input type="text" name="last-name" id="last-name" required placeholder="Иванов">
-                    </div>
-
-                    <div class="reg-group">
-                        <label for="first-name">Имя</label>
-                        <input type="text" name="first-name" id="first-name" required placeholder="Иванов">
-                    </div>
-
-                    <div class="reg-group">
-                        <label for="email">Электронная почта</label>
-                        <input type="email" name="email" id="email" required placeholder="example@mail.com">
-                    </div>
-
-                    <div class="reg-group">
-                        <label for="password">Пароль</label>
-                        <input type="password" name="password" id="password" required placeholder="Минимум 6 символов">
-                    </div>
-
-                    <div class="reg-group">
-                        <label for="confirm-password">Пароль</label>
-                        <input type="password" name="confirm-password" id="confirm-password" required placeholder="Повторите пароль">
-                    </div>
-
-                    <button type="submit" class="reg-btn">Создать аккаунт</button>
-
-                </form>
-
-                <p class="reg-footer">Уже есть аккаунт? <a href="/login">Войти</a></p>
+        <form id="reg-form" method="POST" action="/register">
+            <div class="reg-group">
+                <label for="last-name">Фамилия</label>
+                <input type="text" name="last-name" id="last-name" required placeholder="Иванов">
             </div>
-            
-        </div>
-        
-    </main>
+            <div class="reg-group">
+                <label for="first-name">Имя</label>
+                <input type="text" name="first-name" id="first-name" required placeholder="Иванов">
+            </div>
+            <div class="reg-group">
+                <label for="email">Электронная почта</label>
+                <input type="email" name="email" id="email" required placeholder="example@mail.com">
+            </div>
+            <div class="reg-group">
+                <label for="password">Пароль</label>
+                <input type="password" name="password" id="password" required placeholder="Минимум 6 символов">
+            </div>
+            <div class="reg-group">
+                <label for="confirm-password">Повторите пароль</label>
+                <input type="password" name="confirm-password" id="confirm-password" required placeholder="Повторите пароль">
+            </div>
+            <button type="submit" class="reg-btn">Создать аккаунт</button>
+        </form>
 
-
-    <footer class="footer">
-        <div class="footer-top">
-            <span>
-                Никита СОСИ ХУЙ
-            </span>
-
-        </div>
-
-        <div class="footer-down">
-            <span>
-                Zalupoker
-            </span>
-              
-            <h1>
-                © 2026 zalupoker Exchange
-            </h1>
-        </div>
-    </footer>
-
-
-</body>
-</html> 
+        <p class="reg-footer">Уже есть аккаунт? <a href="/login">Войти</a></p>
+    </div>
+</div>
+{% endblock %}

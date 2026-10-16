@@ -1,77 +1,29 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zalupoker</title>
-    <link rel="stylesheet" href="/static/css/main.css">
-    <link rel="shortcut icon" href="/static/images/favicon.svg" type="image/x-icon">
+{% extends "base.html" %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+{% block header %}
+<header class="head">
+    <div class="head_div">
+        <nav class="head_nav">
+            <a href="/"><img src="/static/images/logo.svg" alt=""></a>
+            <ul class="head_list">
+                <li><a href="/exchange">К обмену</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+{% endblock %}
 
-      
-</head>
-<body>
-    <header class="head">
-        <div class="head_div">
-            <nav class="head_nav">
-                <a href="/"><img src="/static/images/logo.svg" alt=""></a>
+{% block content %}
+<div class="profile-card">
+    <div class="profile-card-info">
+        <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+        <span class="balance">Баланс: 0</span>
 
-                <ul class="head_list">
-                    <li>
-                        <a href="exchenge.html">К обмену</a>
-                    </li>
-                </ul>
+        <p>Email: <a href="mailto:{{ user.email }}" class="profile-email">{{ user.email }}</a></p>
 
-            </nav>
-
-            
-        </div>
-        
-        
-    </header>
-        
-
-    
-    <main>
-        
-        <div class="profile-card">
-        
-            <div class="profile-card-info">
-                <h1>{{user.first_name}} {{user.last_name}}</h1>
-                <span class="balance">Баланс: 0</span>
-        
-                <p>Email: <a href="mailto:examle@mail.com" class="profile-email">{{user.email}}</a></p>
-                <button type="" class="reg-btn"><a href="./exchenge.html" class="k-obmenu">К обмену</a></button>
-
-            </div>
-        
-         </div>
-        
-    </main>
-
-
-    <footer class="footer">
-        <div class="footer-top">
-            <span>
-                Никита СОСИ ХУЙ
-            </span>
-
-        </div>
-
-        <div class="footer-down">
-            <span>
-                Zalupoker
-            </span>
-              
-            <h1>
-                © 2026 zalupoker Exchange
-            </h1>
-        </div>
-    </footer>
-
-
-</body>
-</html> 
+        <button class="reg-btn">
+            <a href="/exchange" class="k-obmenu">К обмену</a>
+        </button>
+    </div>
+</div>
+{% endblock %}
