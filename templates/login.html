@@ -4,7 +4,7 @@
 <header class="head">
     <div class="head_div">
         <nav class="head_nav">
-            <a href="/"><img src="/static/images/logo.svg" alt=""></a>
+            <a href="{{ url_for('index') }}"><img src="/static/images/logo.svg" alt=""></a>
         </nav>
     </div>
 </header>
@@ -25,7 +25,7 @@
             {% endif %}
         {% endwith %}
 
-        <form id="loin-form" method="POST" action="/login">
+        <form id="loin-form" method="POST" action="{{ url_for('login') }}">
             <div class="reg-group">
                 <label for="email">Электронная почта</label>
                 <input type="email" name="email" id="email" required placeholder="example@mail.com">
@@ -37,7 +37,7 @@
             <button type="submit" class="reg-btn">Войти</button>
         </form>
 
-        <p class="reg-footer">Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+        <p class="reg-footer">Нет аккаунта? <a href="{{ url_for('register') }}">Зарегистрироваться</a></p>
     </div>
 </div>
 {% endblock %}

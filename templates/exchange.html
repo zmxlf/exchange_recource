@@ -4,7 +4,7 @@
 <header class="head">
     <div class="head_div">
         <nav class="head_nav">
-            <a href="/"><img src="/static/images/logo.svg" alt=""></a>
+            <a href="{{ url_for('index') }}"><img src="/static/images/logo.svg" alt=""></a>
         </nav>
     </div>
 </header>
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <a class="button_login" href="/register">Обменять сейчас</a>
+        <a class="button_login" href="{{ url_for('register') }}">Обменять сейчас</a>
         <p class="timer_info">Курс зафиксируется на 15 минут</p>
     </div>
 </div>

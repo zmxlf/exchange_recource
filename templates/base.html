@@ -16,22 +16,22 @@
     </head>
 
     <body>
-        <header>
-            {% block header %}
-            <header class="head">
-                <div class="head_div">
-                    <nav class="head_nav">
-                        <a href="index.html"><img src="/static/images/logo.svg" alt=""></a>
 
-                        <ul class="head_list">
-                            {% block nav %}
-                            <li class="head_list-item">
-                                <a class="head_list-button" href="/register">Войти</a>
-                            </li>
-                            {% endblock %}
-                        </ul>
-                    </nav>
-                </div>    
+        {% block header %}
+        <header class="head">
+            <div class="head_div">
+                <nav class="head_nav">
+                    <a href="{{ url_for('index') }}"><img src="/static/images/logo.svg" alt=""></a>
+
+                    <ul class="head_list">
+                        {% block nav %}
+                        <li class="head_list-item">
+                            <a class="head_list-button" href="{{ url_for('login') }}">Войти</a>
+                        </li>
+                        {% endblock %}
+                    </ul>
+                </nav>
+            </div>
         </header>
         {% endblock %}
 

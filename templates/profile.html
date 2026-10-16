@@ -4,9 +4,9 @@
 <header class="head">
     <div class="head_div">
         <nav class="head_nav">
-            <a href="/"><img src="/static/images/logo.svg" alt=""></a>
+            <a href="{{ url_for('index') }}"><img src="/static/images/logo.svg" alt=""></a>
             <ul class="head_list">
-                <li><a href="/exchange">К обмену</a></li>
+                <li><a href="{{ url_for('exchange') }}">К обмену</a></li>
             </ul>
         </nav>
     </div>
@@ -22,7 +22,7 @@
         <p>Email: <a href="mailto:{{ user.email }}" class="profile-email">{{ user.email }}</a></p>
 
         <button class="reg-btn">
-            <a href="/exchange" class="k-obmenu">К обмену</a>
+            <a href="{{ url_for('exchange') }}" class="k-obmenu">К обмену</a>
         </button>
     </div>
 </div>
