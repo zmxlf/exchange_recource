@@ -17,7 +17,7 @@
 <div class="profile-card">
     <div class="profile-card-info">
         <h1>{{ user.first_name }} {{ user.last_name }}</h1>
-        <span class="balance">Баланс: 0</span>
+        <span class="balance">{{ balances.amount }} {{balances.currency}}</span>
 
         <p>Email: <a href="mailto:{{ user.email }}" class="profile-email">{{ user.email }}</a></p>
 

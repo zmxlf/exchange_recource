@@ -5,6 +5,9 @@
     <div class="head_div">
         <nav class="head_nav">
             <a href="{{ url_for('index') }}"><img src="/static/images/logo.svg" alt=""></a>
+            <ul class="head_list">
+                <li><a href="{{ url_for('profile') }}">{{user.first_name}} {{user.last_name}}</a></li>
+            </ul>
         </nav>
     </div>
 </header>
@@ -12,6 +15,21 @@
 
 {% block content %}
 <div class="obmen">
+
+
+
+    {% if rates %}
+    
+    <div class="rates-bar">
+        <span class="rate-item">USD: {{ rates.USD }} ₽</span>
+        <span class="rate-item">EUR: {{ rates.EUR }} ₽</span>
+        <span class="rate-item">CNY: {{ rates.CNY }} ₽</span>
+    </div>
+    {% endif %}
+    <div class="balance-box">
+        <span class="balance-label">Ваш баланс</span>
+        <span class="balance-value">{{ balances.amount }} {{ balances.currency }}</span>
+    </div>
     <div class="obmen-okno">
         <h2>Обмен</h2>
 
@@ -46,7 +64,7 @@
         </div>
 
         <a class="button_login" href="{{ url_for('register') }}">Обменять сейчас</a>
-        <p class="timer_info">Курс зафиксируется на 15 минут</p>
+        <p class="timer_info">Курс зафиксируется на день</p>
     </div>
 </div>
 {% endblock %}
