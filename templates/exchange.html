@@ -28,7 +28,9 @@
     {% endif %}
     <div class="balance-box">
         <span class="balance-label">Ваш баланс</span>
-        <span class="balance-value">{{ balances.amount }} {{ balances.currency }}</span>
+        {% for a in balances %}
+            <span class="balance">{{ a.amount }} {{ a.currency }}</span>
+        {% endfor %}
     </div>
     <div class="obmen-okno">
         <h2>Обмен</h2>

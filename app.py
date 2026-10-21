@@ -25,7 +25,7 @@ def profile():
         return redirect(url_for("register"))
 
     user = models.User.query.get(user_id)
-    balances = models.Balance.query.filter_by(user_id=user_id).first()
+    balances = models.Balance.query.filter_by(user_id=user_id).all()
     if not user:
         session.clear()
         return redirect(url_for("register"))
@@ -66,14 +66,36 @@ def register():
         db.session.add(user)
         db.session.flush()
 
+        base_balances = {
+            "RUB": 100,
+            "USD": 0,
+            "EUR": 0,
+            "CNY": 0
+        }
 
-        balances=models.Balance(
-            user_id=user.id,
-            currency="RUB",
-            amount=100,
+        for currency,amount in base_balances.items():
+            balances=models.Balance(
+                user_id=user.id,
+                currency=currency,
+                amount=amount,
 
-        )
-        db.session.add(balances)
+            )
+            db.session.add(balances)
+
+            history_balances=models.History(
+                        user_id=user.id,
+                        table_name="balances",
+                        doing="insert",
+                        new_data={
+                            "user_id":user.id,
+                            "amount":amount,
+                            "currency":currency,
+                        }
+                
+            )
+            db.session.add(history_balances)
+
+
         db.session.flush()
 
         history_user=models.History(
@@ -89,18 +111,7 @@ def register():
         )
         db.session.add(history_user)
 
-        history_balances=models.History(
-            user_id=user.id,
-            table_name="balances",
-            doing="insert",
-            new_data={
-                "user_id":user.id,
-                "amount":100,
-                "currency":"RUB",
-            }
-    
-        )
-        db.session.add(history_balances)
+        
         db.session.commit()
 
         session["user_id"] = user.id
@@ -137,7 +148,7 @@ def exchange():
             return redirect(url_for("register"))
     
     user = models.User.query.get(user_id)
-    balances = models.Balance.query.filter_by(user_id=user_id).first()
+    balances = models.Balance.query.filter_by(user_id=user_id).all()
     if not user:
         session.clear()
         return redirect(url_for("register"))
