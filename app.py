@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv() 
 from db import db, connect_db
 import models
-from rates import get_rates
+from rates import get_from_cash
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app=Flask(__name__)
@@ -131,7 +131,7 @@ def login():
 
 @app.route("/exchange")
 def exchange():
-    rates=get_rates()
+    rates=get_from_cash()
     user_id=session.get("user_id")
     if not user_id:
             return redirect(url_for("register"))
