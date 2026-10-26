@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request,redirect,url_for,session,flash
+from flask import Flask, render_template, request,redirect,url_for,session,flash,jsonify
 import os
 from dotenv import load_dotenv
 load_dotenv() 
@@ -132,7 +132,7 @@ def login():
         if user and check_password_hash(user.password_hash,password):
             session["user_id"] = user.id
             return redirect(url_for("profile"))
-        
+         
         else:
             flash("Неверный пароль или логин")
             return render_template("login.html")
@@ -151,8 +151,24 @@ def exchange():
     balances = models.Balance.query.filter_by(user_id=user_id).all()
     if not user:
         session.clear()
-        return redirect(url_for("register"))
+        return redirect(url_for("login"))
     return render_template("exchange.html",user=user,balances=balances,rates=rates)
+
+@app.route("api/rates")
+def api_rates():
+    rates=get_from_cash()
+    if not rates:
+        return jsonfy({"error":"Курсы недоступны"}),500
+    return jsonfy(rates)
+
+
+@app.route("api/balances")
+def api_balances():
+    user_id=session.get()
+    if not user_id:
+        return jsonfy({"error":"Не авторизован"}), 401
+    balances = models.Balance.query.filter_by(user_id=user_id).all()
+    return jsonfy({a.currency: float(a.amount) for a in balances})
 
 
 if __name__=="__main__":
